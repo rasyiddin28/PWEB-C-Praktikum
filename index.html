@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PWEB-C Javascript</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:700,600' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' href='pwebPrak.css'>
+</head>
+<body id="Body">
+    <form id="formLogin" name="login" >
+        <div class="kotakTengah">
+            <h1>Login</h1>
+            <input class="username" name="username" type="text" placeholder="Username">
+            <input class="username" name="password" type="password" placeholder="Password">
+            <button type="submit" data-toggle="modal">Login</button>
+            <div class="modal invalid">invalid username or password</div>
+        </div>
+    </form>
+    <div class="modal success">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    Success
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let formLogin = document.getElementById("formLogin")
+        formLogin.addEventListener("click", function(event){
+            event.preventDefault()
+        });
+
+        let Body = document.getElementById("Body");
+        let button = document.querySelector('button[data-toggle="modal"]');
+        let modalSuccess =  document.querySelector('.success');
+        let modalInvalid =  document.querySelector('.invalid');
+
+        
+        button.addEventListener('click', function() {
+            let username = document.forms["login"]["username"].value;
+            let password = document.forms["login"]["password"].value;
+
+            if (username == "pweb_C" && password == "123123") {
+                modalSuccess.classList.add('show');
+                modalInvalid.classList.remove('show');
+                Body.style.backgroundColor = "green";
+            } else {
+                modalInvalid.classList.add('show');
+                Body.style.backgroundColor = "3498db";
+            }
+        });
+
+        modalSuccess.addEventListener('click', function() {
+            this.classList.remove('show');
+        });    
+    </script>
+
+</body>
+</html>
